@@ -23,6 +23,18 @@ document.addEventListener('DOMContentLoaded', function(e){
     
       // append the element to the container
       playerContainer.append(playerDiv)
+
+        // add like event listener to each button as player is created
+
+      const likeButton = playerDiv.querySelector('button')
+      const like = likeButton.parentNode.querySelector('p.likes')
+      likeButton.addEventListener('click', function(e){
+            let likeNumber = parseInt(like.innerText.split(" ")[0]);
+            // debugger
+            likeNumber += 1;
+            like.innerText = `${likeNumber} likes`;
+        });
+    
     }
     
     // for each player in the array, render to the DOM
@@ -42,39 +54,13 @@ document.addEventListener('DOMContentLoaded', function(e){
       }
     }
     
-    // header.addEventListener('click', function(e){
-    //     const header = e.target
-    //     if(header.style.color === 'red'){
-    //         header.style.color ="black"
-    //     } else {
-    //         header.style.color = "red"
-    //     }
-    // });
-    
     header.addEventListener('click', function(e){
         toggleColor(header)
     })
     
     
     /***** Deliverable 2 *****/
-    // function newPlayer(){
-    //     const newPlayerForm = document.querySelector("#new-player-form")
-    //     newPlayerForm.addEventListener('submit', function(e){
-    //         //once we submit we first want to get all player data and create an object. then we want to pass this player object to renderPlayer so that it will actually create the HTML to show our player
-    //         e.preventDefault()
-    //         // console.log(e)
-    //         let player = {
-    //             number: `${newPlayerForm.number.value}`,
-    //             name: `${newPlayerForm.name.value}`,
-    //             nickname: `${newPlayerForm.nickname.value}`,
-    //             photo: `${newPlayerForm.photo.value}`,
-    //             likes: 1000,
-    //         };
-    //         return player
-    //     });
-    // }
-    // console.log(newPlayer)
-    // renderPlayer(newPlayer)
+
     
     // first find the form that we will be submitting the new player values to . next add an event listener to the form for when we submit it. We don't want to reload the page so we can use e.preventDefault(). Next we want to create a player object with the data passed into the form. we get this data by getting the values of the form inputs via their names. now run this player object through the renderPlayer method to actually create the HTML to put the player in the DOM
   
@@ -98,18 +84,19 @@ document.addEventListener('DOMContentLoaded', function(e){
     /***** Deliverable 3 *****/
     
     // first get all like buttons. This returns a node list which we can iterate though. For each button in this node list we want to locate where it is actually displayin the likes. next we want to add an event listener for when we click the button. we can get the number of likes from the innerText of the p element and split/parse it to get a number which we can then increment and rerender.
-    function addLike(){
-        const likeButtons = document.querySelectorAll('.like-button')
-        for(let button of likeButtons){
-            const like = button.parentNode.querySelector('p.likes')
-            button.addEventListener('click', function(e){
-                let likeNumber = parseInt(like.innerText.split(" ")[0]);
-                likeNumber += 1;
-                like.innerText = `${likeNumber} likes`;
-            });
-        };
-    }
+
+    // function addLike(){
+    //     const likeButtons = document.querySelectorAll('.like-button')
+    //     for(let button of likeButtons){
+    //         const like = button.parentNode.querySelector('p.likes')
+    //         button.addEventListener('click', function(e){
+    //             let likeNumber = parseInt(like.innerText.split(" ")[0]);
+    //             likeNumber += 1;
+    //             like.innerText = `${likeNumber} likes`;
+    //         });
+    //     };
+    // }
     
     createNewPlayer()
-    addLike()
+    // addLike()
 })
