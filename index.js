@@ -26,14 +26,14 @@ document.addEventListener('DOMContentLoaded', function(e){
 
         // add like event listener to each button as player is created
 
-      const likeButton = playerDiv.querySelector('button')
-      const like = likeButton.parentNode.querySelector('p.likes')
-      likeButton.addEventListener('click', function(e){
-            let likeNumber = parseInt(like.innerText.split(" ")[0]);
-            // debugger
-            likeNumber += 1;
-            like.innerText = `${likeNumber} likes`;
-        });
+    //   const likeButton = playerDiv.querySelector('button')
+    //   const like = likeButton.parentNode.querySelector('p.likes')
+    //   likeButton.addEventListener('click', function(e){
+    //         let likeNumber = parseInt(like.innerText.split(" ")[0]);
+    //         // debugger
+    //         likeNumber += 1;
+    //         like.innerText = `${likeNumber} likes`;
+    //     });
     
     }
     
@@ -97,6 +97,31 @@ document.addEventListener('DOMContentLoaded', function(e){
     //     };
     // }
     
+    function addLike(){
+        const div = document.querySelector('.player-container')
+        div.addEventListener('click', function(e){
+            if(e.target.className === 'like-button'){
+                const likes = e.target.parentNode.querySelector('p')
+                let likeNumber = parseInt(likes.innerText.split(" ")[0]);
+                // debugger
+                likeNumber += 1;
+                likes.innerText = `${likeNumber} likes`;
+                    // debugger
+            }
+        // debugger
+       }) ;
+    // const likeButtons = document.querySelectorAll('.like-button')
+    // for(let button of likeButtons){
+    //     const like = button.parentNode.querySelector('p.likes')
+    //     button.addEventListener('click', function(e){
+    //         let likeNumber = parseInt(like.innerText.split(" ")[0]);
+    //         likeNumber += 1;
+    //         like.innerText = `${likeNumber} likes`;
+    //     });
+    // };
+}
+    
+
     createNewPlayer()
-    // addLike()
+    addLike()
 })
